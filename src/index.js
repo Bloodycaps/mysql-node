@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 //Variables Gobales
 
 //Rutas
-
+app.use(require('./routes'))
 
 //Public
 
