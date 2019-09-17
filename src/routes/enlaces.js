@@ -19,4 +19,10 @@ router.post('/anadir', async (req, res) =>{
     res.send('recibido')
 });
 
+router.get('/', async (req, res) =>{
+    const enlaces = await pool.query('SELECT * FROM enlaces');
+    res.render('enlaces/lista', { enlaces }); 
+});
+
+
 module.exports = router;
