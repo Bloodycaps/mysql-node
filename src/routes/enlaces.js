@@ -15,6 +15,7 @@ router.post("/anadir", async (req, res) => {
     descripcion
   };
   await pool.query(" INSERT INTO enlaces set ?", [nuevoEnlace]);
+  req.flash('bien', 'Enlace añadido correctamente');
   res.redirect("/enlaces");
 });
 
@@ -26,6 +27,7 @@ router.get("/", async (req, res) => {
 router.get("/eliminar/:id", async (req, res) => {
   const { id } = req.params;
   await pool.query("DELETE FROM enlaces WHERE id = ?", [id]);
+  req.flash('eliminar', 'Enlace eliminado satisfactoriamente');
   res.redirect("/enlaces");
 });
 
@@ -44,6 +46,7 @@ router.post('/editar/:id', async (req, res) => {
         descripcion
     };
     await pool.query('UPDATE enlaces set ? WHERE id = ?', [nuevoEnlace, id]);
+    req.flash('editar', 'Enlace editado satisfactoriamente');
     res.redirect('/enlaces');
 });
 
