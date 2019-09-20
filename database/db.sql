@@ -5,7 +5,7 @@ USE enlaces;
 CREATE TABLE usuario(
     id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombreusuario VARCHAR(16) NOT NULL,
-    contraseña VARCHAR(60) NOT NULL,
+    contrasenia VARCHAR(60) NOT NULL,
     nombrecompleto VARCHAR(100) NOT NULL
 );
  DESCRIBE usuario;
