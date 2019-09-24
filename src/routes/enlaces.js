@@ -13,7 +13,8 @@ router.post("/anadir", aut.isLoggedIn, async (req, res) => {
   const nuevoEnlace = {
     titulo,
     url,
-    descripcion
+    descripcion,
+    user_id: req.user.id
   };
   await pool.query(" INSERT INTO enlaces set ?", [nuevoEnlace]);
   req.flash('bien', 'Enlace añadido correctamente');
@@ -21,7 +22,7 @@ router.post("/anadir", aut.isLoggedIn, async (req, res) => {
 });
 
 router.get("/", aut.isLoggedIn, async (req, res) => {
-  const enlaces = await pool.query("SELECT * FROM enlaces");
+  const enlaces = await pool.query("SELECT * FROM enlaces WHERE user_id = ?", [req.user.id]);
   res.render("enlaces/lista", { enlaces });
 });
 
