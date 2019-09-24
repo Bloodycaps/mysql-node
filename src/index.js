@@ -46,6 +46,7 @@ app.use((req, res, next) => {
     app.locals.bien = req.flash('bien');
     app.locals.editar = req.flash('editar');
     app.locals.eliminar = req.flash('eliminar');
+    app.locals.usuario = req.user;
     next();
 });
 
